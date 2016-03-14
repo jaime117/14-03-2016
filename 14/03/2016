@@ -1,0 +1,34 @@
+
+###### importar matriz inegi
+indi3<- ts(read.csv(("C:\\Users\\SALA-C31\\Documents\\3 indicadoress.csv"), header=T), frequency=4, start=2005);
+class(indi3)           
+desoparcial<-ts(indi3[,1], start = 2005,freq=4)
+asla<-ts(indi3[,3], start = 2005,freq=4)
+til1<-ts(indi3[,3], start = 2005,freq=4)
+seriemultiple <- ts.intersect(desoparcial,asla,til1)#serie de tiempo multimple con las 4 variables
+plot(seriemultiple, main = "serie multiple", xlab = "Años", ylab = "Numero de personas", col="salmon")#grafica sere de tiempo multiple
+seriemultiple
+
+
+#######separar la serie de tiempo dependiendo del analisis
+seriemultiple05.09<-window(seriemultiple, start=c(2005,1), end=c(2009,4))
+seriemultiple10.15<-window(seriemultiple, start=c(2010,1), end=c(2015,4))
+plot(seriemultiple05.09,main="serie de tiempo multiple", xlab="años", ylab="numero de personas", col="brown")
+plot(seriemultiple10.15,main="serie de tiempo multiple", xlab="años", ylab="numero de personas", col="brown")
+start(seriemultiple);end(seriemultiple)
+
+
+###ejerciico buscar una serie de tiempo de un tema de interes
+###importarlo
+###declarar serie de tiempo
+###graficar como serie de tiempo cada una
+### crear una serie de tiempo multiple
+### INTEGRANTES: ROOMERO VENCES DAVID EMMANUEL, JAIME VELASQUEZ JUAREZ
+
+amxl <- ts(read.csv(("C:\\Users\\SALA-C30\\Documents\\sam\\AMXL1.csv"), header = T), frequency = 12, start = 2012);
+class(amxl)
+precioapertura <- ts(amxl [,1], start=2012, freq = 12)
+preciocierre <- ts(amxl [,2], start = 2012, freq = 12)
+seriemultiple <- ts.intersect(precioapertura,preciocierre)#serie de tiempo multimple con las 2 variables
+plot(seriemultiple, main = "Precio de Acciones de America Movil", xlab = "Años", ylab = "Precio", col="blue")#grafica sere de tiempo multiple
+start(seriemultiple);end(seriemultiple)
